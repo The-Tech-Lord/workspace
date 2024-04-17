@@ -1,0 +1,21 @@
+1. Provide a high-level description (ie, using minimal amount of technical
+   jargon) of the project in no more than 200 words.
+
+   Creating the Mozart Waltz generator has the student utilize all the skills that were taught and acquired
+   regarding chapter 1 of the textbook. It allows the student to get a better feel of what real world projects
+   can be capable of and what they may be when getting into the work force.
+
+2. Did you receive help from anyone? List their names, status (classmate, 
+   CS110 grad, TA, other), and the nature of help received.
+
+   Name               Status       Help Received
+   ----               ------       -------------
+
+   ...                ...          ...
+
+3. List any other comments here. Feel free to provide any feedback on how
+   much you learned from doing the assignment, and whether you enjoyed
+   doing it.
+
+   The inputs felt weird from how C would do it, though it was an interesting experience learning how Python
+   inputs/outputs work.

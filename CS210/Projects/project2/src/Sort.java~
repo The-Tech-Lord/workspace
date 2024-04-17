@@ -1,0 +1,79 @@
+import dsa.LinkedStack;
+
+import stdlib.StdIn;
+import stdlib.StdOut;
+
+public class Sort {
+    // Entry point.
+    public static void main(String[] args) {
+        LinkedDeque<String> queue = new LinkedDeque<String>();
+
+		while (!StdIn.isEmpty()) {
+			String input = StdIn.readString();
+
+			// If queue is empty
+			if (queue.isEmpty()) {
+				// StdOut.print("1 " + input + " ");
+				
+				queue.addFirst(input);
+				
+				// for (String s : queue) {
+				// 	   StdOut.print(s);
+				// }
+				// StdOut.println();
+				
+				continue;
+			}
+
+			// Checks if the current word/character is less than another character in the current queue
+			if (less(input, queue.peekFirst())) {
+				queue.addFirst(input);
+
+				// StdOut.print("F " + input + " ");
+				// for (String s : queue) {
+				// 	   StdOut.print(s);
+				// }
+				// StdOut.println();
+			} else if (!less(input, queue.peekLast())) {
+				queue.addLast(input);
+				
+				// StdOut.print("L " + input + " ");
+				// for (String s : queue) {
+				// 	   StdOut.print(s);
+				// }
+				// StdOut.println();
+			} else {
+				LinkedStack<String> temp = new LinkedStack<String>();
+
+				// Remove values up to the value that is greater than itself, or the value that is also the same as itself
+				while (!less(input, queue.peekFirst())) {
+					temp.push(queue.removeFirst());
+				}
+				
+				queue.addFirst(input);
+
+				// Start popping values from the temp LinkedStack object into queue
+				for (String s : temp) {
+					queue.addFirst(temp.pop());
+				}
+				
+				// StdOut.print("W " + input + " ");
+				// for (String s : queue) {
+				//     StdOut.print(s);
+				// }
+				// StdOut.println();
+			}
+		}
+		// StdOut.println();
+		
+		for (String s : queue) {
+			StdOut.println(s);
+		}
+		StdOut.println();
+    }
+
+    // Returns true if v is less than w according to their lexicographic order, and false otherwise.
+    private static boolean less(String v, String w) {
+        return v.compareTo(w) < 0;
+    }
+}

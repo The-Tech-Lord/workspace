@@ -1,0 +1,21 @@
+1. Provide a high-level description (ie, using minimal amount of technical
+   jargon) of the project in no more than 200 words.
+
+   Project 4 has the student program an elementary search and solve algorithm that will be applicable in more advanced settings
+   such as game development or any STEM field, if of course refined and made more sophisticated. Some parts of this project
+   maybe also provoke a need to have some math knowledge to implement a more efficient algorithm.
+
+2. Did you receive help from anyone? List their names, status (classmate, 
+   CS210 grad, TA, other), and the nature of help received.
+
+   Name               Status       Help Received
+   ----               ------       -------------
+
+   ...                ...          ...
+
+3. List any other comments here. Feel free to provide any feedback on how
+   much you learned from doing the assignment, and whether you enjoyed
+   doing it.
+
+   Figuring out some math in this project was quite fun actually. Wasn't too hard but challenging enough that it can stick with you.
+   Also, dang those silly mistakes can really cost you xd

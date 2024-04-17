@@ -1,0 +1,20 @@
+1. Provide a high-level description (ie, using minimal amount of technical
+   jargon) of the project in no more than 200 words.
+
+   The Percolation project is a more simple implementation of percolation simulations that are most likely
+   much more complicated simulations of how porous substances can be simulated. It also provides the student
+   to learn more about how data structures can be used.
+
+2. Did you receive help from anyone? List their names, status (classmate, 
+   CS210 grad, TA, other), and the nature of help received.
+
+   Name               Status       Help Received
+   ----               ------       -------------
+
+   ...                ...          ...
+
+3. List any other comments here. Feel free to provide any feedback on how
+   much you learned from doing the assignment, and whether you enjoyed
+   doing it.
+
+   ...

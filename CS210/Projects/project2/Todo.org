@@ -1,0 +1,39 @@
+#+TITLE: Tasks
+#+DATE: 2/16/2024
+#+AUTHOR: Tsudo
+
+* DONE Problem 1
+** DONE Instance Variables
+** DONE Functions
+*** DONE LinkedDeqeue()
+*** DONE boolean isEmpty()
+*** DONE int size()
+*** DONE void addFirst(Item item)
+*** DONE void addLast(Item item)
+*** DONE Item peekFirst()
+*** DONE Item removeFirst()
+*** DONE Item peekLast()
+*** DONE Item removeLast()
+*** DONE Iterator<Item> iterator()
+*** DONE LinkedDeqeue :: DequeIterator
+
+* DONE Problem 2
+
+* DONE Problem 3
+** DONE Functions
+*** DONE ResizingArrayRandomQueue()
+*** DONE boolean isEmpty()
+*** DONE int size()
+*** DONE void enqueue(Item item)
+*** DONE Item sample()
+*** DONE Item dequeue()
+*** DONE Iterator<Item> iterator()
+*** DONE ResizingArrayrandomQueue :: RandomQueueIterator()
+**** DONE RandomqueueIterator()
+**** DONE boolean hasNext()
+**** DONE Item next()
+
+* DONE Problem 4
+** DONE User Input
+** DONE Create random queue
+** DONE Implement logic

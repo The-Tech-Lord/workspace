@@ -1,0 +1,21 @@
+1. Provide a high-level description (ie, using minimal amount of technical
+   jargon) of the project in no more than 200 words.
+
+   The project makes the student get more comfortable with using Interfaces as well as creating data structures to manipulate
+   and contain various types of data. It also introduces the student to start thinking about possible corner cases, even if they seem like they may never be checked and appear
+   unnecessary.
+
+2. Did you receive help from anyone? List their names, status (classmate, 
+   CS210 grad, TA, other), and the nature of help received.
+
+   Name               Status       Help Received
+   ----               ------       -------------
+
+   ...                ...          ...
+
+3. List any other comments here. Feel free to provide any feedback on how
+   much you learned from doing the assignment, and whether you enjoyed
+   doing it.
+
+   Learning about how the For-Each loop worked helped with wondering how I needed to use the Iterator and Iterable interfaces. I'd say it was quite enjoyable but then I realized that
+   corner cases exist lol.

@@ -1,0 +1,20 @@
+1. Provide a high-level description (ie, using minimal amount of technical
+   jargon) of the project in no more than 200 words.
+
+   Project5, Atomic Nature of Matter, makes the student start interacting with more types of inputs, this project
+   emphasizing images now. Tracking molecules in water across a chain of images using a much more simplified method
+   than what is used in the scientific field.
+
+2. Did you receive help from anyone? List their names, status (classmate, 
+   CS110 grad, TA, other), and the nature of help received.
+
+   Name               Status       Help Received
+   ----               ------       -------------
+
+   Lily Tran          CS110 Grad   Running average guidence
+
+3. List any other comments here. Feel free to provide any feedback on how
+   much you learned from doing the assignment, and whether you enjoyed
+   doing it.
+
+   Running average equation was painful to implement. More than necessary. I love computer science.

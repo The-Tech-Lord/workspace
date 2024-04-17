@@ -1,0 +1,5 @@
+#+TITLE: TODO
+#+DATE: 2/18/2024
+#+AUTHOR: Tsudo
+
+* Functions

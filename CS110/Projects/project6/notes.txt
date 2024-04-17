@@ -1,0 +1,19 @@
+1. Provide a high-level description (ie, using minimal amount of technical
+   jargon) of the project in no more than 200 words.
+
+   Project 6, the Markov Model, introduces the student to implementing statistical computations into their programs. This will start to prepare the student for more advanced topics
+   such as ML/AI or other fields that are statistics intensive.
+
+2. Did you receive help from anyone? List their names, status (classmate, 
+   CS110 grad, TA, other), and the nature of help received.
+
+   Name               Status       Help Received
+   ----               ------       -------------
+
+   ...                ...          ...
+
+3. List any other comments here. Feel free to provide any feedback on how
+   much you learned from doing the assignment, and whether you enjoyed
+   doing it.
+
+   Using the Python interpreter in the terminal is a great tool for testing code snippets. It also made me try out some ideas I thought would maybe not work, but ended up working.

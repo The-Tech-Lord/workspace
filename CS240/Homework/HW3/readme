@@ -1,0 +1,10 @@
+The Q1 program returns a unordered sorted list of even and odd numbers from a series of unordered inputs from standard input. It first take the user standard input and
+then traverses through the array finding even and odd numbers using the modulo expression `arr[i] % 2 == 0`. From this expression, the program will determine if the value at
+`arr[i]` will go into either the `even[]` array or the `odd[]` array.
+
+The Q2 program returns the number of duplicates from a series of unordered inputs from standard input. It looks at the current index and loops to check for a duplicate. The logic
+behind this is that if there was a duplicate value before the current index, then it would not increment the `duplicate_num` value as that had already been checked beforehand using
+the `duplicates[]` array.
+
+the Q3 program returns a unordered sorted list of unique occurrences of values from a series of unordered inputs from standard input. It uses two loops to check for duplicates in
+front and behind the current indexed value. It will then put the unique occurrences of values into the `unique[]` array and then print out its values.

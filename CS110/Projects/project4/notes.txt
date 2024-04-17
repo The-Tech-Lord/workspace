@@ -1,0 +1,20 @@
+1. Provide a high-level description (ie, using minimal amount of technical
+   jargon) of the project in no more than 200 words.
+
+   The RSA Cryptography project has the student get a feel for what it is like to create their
+   own library or manage one. It has the student try out different forms of input that can either
+   go character by character or read the entire paragraph of input one has provided.
+
+2. Did you receive help from anyone? List their names, status (classmate, 
+   CS110 grad, TA, other), and the nature of help received.
+
+   Name               Status       Help Received
+   ----               ------       -------------
+
+   ...                ...          ...
+
+3. List any other comments here. Feel free to provide any feedback on how
+   much you learned from doing the assignment, and whether you enjoyed
+   doing it.
+
+   Realizing stdio.readAll() existed was a godsend
