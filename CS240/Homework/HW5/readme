@@ -1,0 +1,5 @@
+while making the functions for all the programs, I used double pointers as that is how I learned linked list related data structures in C. I also made it so that I would be
+accounting for if the `head` node is `NULL`. I utilized `typedef` as well as it would allow me to not have to keep typing `struct` when I needed to define a variable or function
+parameter.
+
+And yes I did finish these the day before haha, but it was quite fun to complete the homework!
