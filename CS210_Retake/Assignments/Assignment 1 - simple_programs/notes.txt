@@ -1,0 +1,45 @@
+1. Provide a high-level description (ie, using minimal amount of technical jargon) of each problem
+in no more than 100 words.
+
+Problem 1 (Greet Three): The user inputs 3 variables to be the names of 3 people and outputs a greeting to each of them
+
+Problem 2 (Three Sort): Sorts 3 numbers that are inputted by the user 
+
+Problem 3 (Great Circle Distance): Input the latitude and longitude and calculate the great circle distance
+
+Problem 4 (Uniform Random Numbers): Generates 3 random numbers within a given bounds (i.e., [a, b)) and prints their mean, variance, and standard deviation
+
+Problem 5 (Triangle Inequality): Checks if all of the 3 given numbers equal the sum of the other 2 numbers
+
+Problem 6 (Quadratic Equation): Outputs the roots given the a, b, and c of a quadratic equation
+
+Problem 7 (Six-sided Die): Prints a side of a 6-sided die depending on the input
+
+Problem 8 (Playing Card): Outputs a random card from a standard 52-card deck
+
+Problem 9 (Greatest Common Divisor): Prints out the largest number that can divide both numbers without a remainder
+
+Problem 10 (Factorial Function): Finds the factorial of a given number
+
+Problem 11 (Fibonacci Function): Gives the Fibonacci number result of a given number
+
+Problem 12 (Primality Test): Tests if a given number is prime
+
+Problem 13 (Counting Primes): Finds the primes within a certain boundary (e.g., 10000)
+
+Problem 14 (Perfect Numbers): Lists the numbers whose divisors, not including itself (e.g., 1, 2, 3), add up to the number itself
+
+Problem 15 (Ramanujan Numbers): Returns a number whose result can be calculated by the sum of 2 cubed integers, in two different ways, where both ways equal each other
+
+2. Did you receive help from anyone? List their names, status (classmate, course staff, other), and
+the nature of help received.
+
+Name                   Status           Help Received
+----                   ------           -------------
+
+...                    ...              ...
+
+3. List any other comments here. Feel free to provide any feedback on how much you learned from
+doing the assignment, and whether you enjoyed doing it.
+
+Apparently Java only runs the variable initialization part ONCE. Now that I think about it, it makes perfect sense.
