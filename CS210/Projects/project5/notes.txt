@@ -1,7 +1,8 @@
 1. Provide a high-level description (ie, using minimal amount of technical
    jargon) of the project in no more than 200 words.
 
-   ...
+   Project 5 has the student start programming a tree-based symbol table and learning how to use various types of data to create a symbol table that can effectively accept any type
+   of data you give it (as long as it's the type of data that you defined in the data structure).
 
 2. Did you receive help from anyone? List their names, status (classmate, 
    CS210 grad, TA, other), and the nature of help received.
@@ -15,4 +16,4 @@
    much you learned from doing the assignment, and whether you enjoyed
    doing it.
 
-   ...
+   I have no idea why the `puts` method from RedBlackBST is removing elements. I even decompiled the code to see how the code worked.
