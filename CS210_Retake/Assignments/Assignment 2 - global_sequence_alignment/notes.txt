@@ -1,0 +1,29 @@
+1. Provide a high-level description (ie, using minimal amount of technical jargon) of each problem
+in no more than 100 words.
+
+Problem 1 (Reverse): ...
+
+Problem 2 (Euclidean Distance): ...
+
+Problem 3 (Transpose): ...
+
+Problem 4 (Strange Matrix): ...
+
+Problem 5 (Pascal's Triangle): ...
+
+Problem 6 (Compute Edit Distance): ...
+
+Problem 7 (Recover Alignment): ...
+
+2. Did you receive help from anyone? List their names, status (classmate, course staff, other), and
+the nature of help received.
+
+Name                   Status           Help Received
+----                   ------           -------------
+
+...                    ...              ...
+
+3. List any other comments here. Feel free to provide any feedback on how much you learned from
+doing the assignment, and whether you enjoyed doing it.
+
+...
