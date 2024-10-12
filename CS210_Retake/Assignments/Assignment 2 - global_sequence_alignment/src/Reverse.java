@@ -11,7 +11,12 @@ public class Reverse {
 			input[input.length - i - 1] = temp;
 		}
 		for (int i = 0; i < input.length; i++) {
-			StdOut.print(input[i] + " ");
+			StdOut.print(input[i]);
+
+			if (i == input.length - 1) {
+				break;
+			}
+			StdOut.print(" ");
 		}
 		StdOut.println();
     }

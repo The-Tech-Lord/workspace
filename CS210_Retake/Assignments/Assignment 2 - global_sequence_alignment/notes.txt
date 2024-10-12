@@ -1,19 +1,19 @@
 1. Provide a high-level description (ie, using minimal amount of technical jargon) of each problem
 in no more than 100 words.
 
-Problem 1 (Reverse): ...
+Problem 1 (Reverse): Reverses a given string, where the string's characters' are separated by spaces
 
-Problem 2 (Euclidean Distance): ...
+Problem 2 (Euclidean Distance): Finds the euclidean distance of 2 or more points
 
-Problem 3 (Transpose): ...
+Problem 3 (Transpose): Turns the matrix and it's contents at a 90 degree angle
 
-Problem 4 (Strange Matrix): ...
+Problem 4 (Strange Matrix): The elements of the matrix are the additions of the index's right, bottom, and lower right elements, excluding the outer column and lowest row, whose elements are representative of a matrix's index (starting at 0 from the bottom right corner).
 
-Problem 5 (Pascal's Triangle): ...
+Problem 5 (Pascal's Triangle): Prints out a section Pascal's Triangle
 
-Problem 6 (Compute Edit Distance): ...
+Problem 6 (Compute Edit Distance): Computes the most optimal edit distance between two DNA sequences
 
-Problem 7 (Recover Alignment): ...
+Problem 7 (Recover Alignment): Recovers and prints the optimal alignment between two DNA sequences
 
 2. Did you receive help from anyone? List their names, status (classmate, course staff, other), and
 the nature of help received.

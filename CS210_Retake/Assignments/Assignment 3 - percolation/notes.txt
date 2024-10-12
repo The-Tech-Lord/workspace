@@ -1,0 +1,27 @@
+1. For each problem, provide in more than 100 words, a short, high-level description of the problem;
+your approach to solve it; and any issues you encountered and if/how you managed to solve them.
+
+Problem 1 (Die Data Type): Returns the face of a dice using OOP
+
+Problem 2 (Location Data Type): Returns the current location and the distance from another location
+
+Problem 3 (Rational Data Type): Returns a simplified rational [function], whose proceeding calculations resembled a finite series
+
+Problem 4 (Harmonic Number): Returns the nth Harmonic number
+
+Problem 5 (Percolation Data Type): 
+
+Problem 6 (Estimation of Percolation Threshold): ...
+
+2. Did you receive help from anyone? List their names, status (classmate, course staff, other), and
+the nature of help received.
+
+Name                   Status           Help Received
+----                   ------           -------------
+
+...                    ...              ...
+
+3. List any other comments here. Feel free to provide any feedback on how much you learned from
+doing the assignment, and whether you enjoyed doing it.
+
+...

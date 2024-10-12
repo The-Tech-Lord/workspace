@@ -24,7 +24,13 @@ public class Transpose {
 
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < m; j++) {
-				StdOut.print(transpose_array[i][j] + " ");
+				StdOut.printf("%.6f", transpose_array[i][j]);
+
+				if (j == m - 1) {
+					break;
+				}
+
+				StdOut.print(" ");
 			}
 			StdOut.println();
 		}
