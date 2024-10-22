@@ -9,9 +9,9 @@ Problem 3 (Rational Data Type): Returns a simplified rational [function], whose 
 
 Problem 4 (Harmonic Number): Returns the nth Harmonic number
 
-Problem 5 (Percolation Data Type): 
+Problem 5 (Percolation Data Type): Tests if a substance is able to percolate
 
-Problem 6 (Estimation of Percolation Threshold): ...
+Problem 6 (Estimation of Percolation Threshold): Calculates an estimates threshold for percolation
 
 2. Did you receive help from anyone? List their names, status (classmate, course staff, other), and
 the nature of help received.
