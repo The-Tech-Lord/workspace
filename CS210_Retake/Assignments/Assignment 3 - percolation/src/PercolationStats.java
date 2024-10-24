@@ -3,7 +3,6 @@ import stdlib.StdRandom;
 import stdlib.StdStats;
 
 public class PercolationStats {
-    private Percolation subject;
 	private int experiments;
 	private double[] thresholds;
 
@@ -13,18 +12,19 @@ public class PercolationStats {
 			throw new IllegalArgumentException("Illegal n or m");
 
 		// Initialize
-		this.subject = new Percolation(n);
 		this.experiments = m;
         this.thresholds = new double[this.experiments];
 
+		// Check if the system percolates for each cycle of experiments
 		for (int i = 0; i < m; i++) {
+			Percolation subject = new Percolation(n);
+
 			// Opening a random site and storing the percolation threshold in the index
 			// associated with the experiment number
-			this.subject.open(StdRandom.uniform(n), StdRandom.uniform(n));
-			this.thresholds[i] = (double)this.subject.numberOfOpenSites() / (double)(n * n);
+			while (!subject.percolates())
+				subject.open(StdRandom.uniform(n), StdRandom.uniform(n));
 
-			if (this.subject.percolates())
-				break;
+			this.thresholds[i] = (double)subject.numberOfOpenSites() / (double)(n * n);
 		}
     }
 

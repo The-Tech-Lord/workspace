@@ -46,6 +46,7 @@ public class Rational {
         // Rationals a/b and c/d are equal iff a == c and b == d.
         Rational a = this, b = (Rational) other;
 
+		// Compare numerators and denominators
 		if (a.x == b.x && a.y == b.y)
 			return true;
 

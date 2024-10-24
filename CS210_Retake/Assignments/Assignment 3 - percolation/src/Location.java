@@ -14,11 +14,13 @@ public class Location {
 
     // Returns the great-circle distance between this location and other.
     public double distanceTo(Location other) {
+		// Command-line inputs
 		double x1 = Math.toRadians(this.lat);
 		double x2 = Math.toRadians(other.lat);
 		double y1 = Math.toRadians(this.lon);
 		double y2 = Math.toRadians(other.lon);
 
+		// Great circle distance calculations
 		return 6359.83 * Math.acos(Math.sin(x1) * Math.sin(x2) + Math.cos(x1) * Math.cos(x2) * Math.cos(y1 - y2));
     }
 
@@ -35,6 +37,7 @@ public class Location {
         }
         Location a = this, b = (Location) other;
 
+		// Compare the latitudes and longitudes
 		if (a.lat == b.lat && a.lon == b.lon)
 			return true;
 
