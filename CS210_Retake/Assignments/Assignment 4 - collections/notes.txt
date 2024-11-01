@@ -1,13 +1,13 @@
 1. For each problem, provide in no more than 100 words, a short, high-level description of the problem;
 your approach to solve it; and any issues you encountered and if/how you managed to solve them.
 
-Problem 1 (Iterable Primes): ...
+Problem 1 (Iterable Primes): Calculates which numbers are prime numbers and prints them out in sequential order using the Iterator Java interface
 
-Problem 2 (Min Max): ...
+Problem 2 (Min Max): Traverses through a singly-linked list and tries to find the minimum and maximum value of all the elements
 
-Problem 3 (Deque): ...
+Problem 3 (Deque): Creates a doubly-linked list that functions as a queue and can either add/remove elements from the front or back, but never in between, hence being a queue
 
-Problem 4 (Random Queue): ...
+Problem 4 (Random Queue): Generates a queue whose elements are random numbers and then prints out the values of the queue from first to last element, that is not null, and afterwards print values by deleting them from the queue and returning the value. Both these methods calculate a sum while iterating and are later compared to see if they are equal.
 
 2. Did you receive help from anyone? List their names, status (classmate, course staff, other), and
 the nature of help received.

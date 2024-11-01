@@ -23,30 +23,34 @@ public class Primes implements Iterable<Integer> {
 
         // Constructs an iterator.
         public PrimesIterator() {
-            this.p = 2;
 			this.count = 0;
+            this.p = 2;
         }
 
         // Returns true if there are anymore primes to be iterated, and false otherwise.
         public boolean hasNext() {
-			return this.count == Primes.this.n;
+			if (this.count < Primes.this.n)
+				return true;
+
+			return false;
         }
 
         // Returns the next prime.
         public Integer next() {
+			this.count++;
+			
 			while (!this.isPrime(this.p))
 				this.p++;
-			this.count++;
-			return this.p++;
-        }
 
-        // Returns true if x is a prime, and false otherwise.
-        private boolean isPrime(int x) {
-            for (int i = 2; i <= x / i; i++) {
-                if (x % i == 0) {
-                    return false;
-                }
-            }
+			return this.p++;
+		}
+
+		// Returns true if x is a prime, and false otherwise.
+		private boolean isPrime(int x) {
+			for (int i = 2; i <= x / i; i++)
+				if (x % i == 0)
+					return false;
+			
             return true;
         }
     }

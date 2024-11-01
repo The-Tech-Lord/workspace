@@ -7,28 +7,28 @@ import stdlib.StdRandom;
 // A data type to represent a double-ended queue (aka deque), implemented using a doubly-linked
 // list as the underlying data structure.
 public class LinkedDeque<T> implements Iterable<T> {
-	private Node front;
+	private Node first;
 	private Node last;
-    private int count;
+    private int n;  // The number of double-linked elements
 
     // Constructs an empty deque.
     public LinkedDeque() {
-        this.count = 0;
-		this.front = null;
+        this.n = 0;
+		this.first = null;
 		this.last = null;
     }
 
     // Returns true if this deque is empty, and false otherwise.
     public boolean isEmpty() {
-        return this.front == null && this.last == null;
+        return (this.first == null && this.last == null);
     }
 
     // Returns the number of items in this deque.
     public int size() {
-        return this.count;
+        return this.n;
     }
 
-    // Adds item to the front of this deque.
+    // Adds item to the first of this deque.
     public void addFirst(T item) {
         if (item == null)
 			throw new NullPointerException("item is null");
@@ -37,15 +37,17 @@ public class LinkedDeque<T> implements Iterable<T> {
 		node.item = item;
 
 		if (this.isEmpty()) {
+			this.first = this.last = node;
 			node.next = node.prev = null;
-			this.front = this.last = node;
-			this.count++;
-		} else {
-			node.next = this.front;
-			this.front.prev = node;
-			this.front = node;
-			this.count++;
+			this.n++;
+			return;
 		}
+		
+		node.next = this.first;
+		this.first.prev = node;
+		this.first = node;
+		this.first.prev = null;
+		this.n++;
     }
 
     // Adds item to the back of this deque.
@@ -57,49 +59,51 @@ public class LinkedDeque<T> implements Iterable<T> {
 		Node node = new Node();
 		node.item = item;
 
-		// Point `this.front` and `this.last` to node if queue is empty
+		// Point `this.first` and `this.last` to node if queue is empty
 		// else, add `node` to the end of the queue
 		if (this.isEmpty()) {
+			this.first = this.last = node;
 			node.next = node.prev = null;
-			this.front = this.last = node;
-			this.count++;
-		} else {
-			node.next = null;
-			node.prev = this.last;
-			this.last.next = node;
-			this.last = node;
-			this.count++;
+			this.n++;
+			return;
 		}
+		
+		node.next = null;
+		node.prev = this.last;
+		this.last.next = node;
+		this.last = node;
+		this.n++;
     }
 
-    // Returns the item at the front of this deque.
+    // Returns the item at the first of this deque.
     public T peekFirst() {
 		if (this.isEmpty())
 			throw new NoSuchElementException("Deque is empty");
-        return this.front.item;
+        return this.first.item;
     }
 
-    // Removes and returns the item at the front of this deque.
+    // Removes and returns the item at the first of this deque.
     public T removeFirst() {
         if (this.isEmpty())
 			throw new NoSuchElementException("Deque is empty");
 
-		// Initialize a temporary front node pointer
-		Node tempFront = this.front;
-		T value = this.front.item;
+		// Initialize a temporary first node pointer
+		Node tempFirst = this.first;
+		T popped_value = this.peekFirst();
+		this.first = this.first.next;
 
-		StdOut.println("FIRST Prev " + this.front.prev);
-		StdOut.println("FIRST Curr " + this.front.next);
-		this.front = this.front.next;
-		StdOut.println("FIRST Next " + this.front.next);
-		StdOut.println("FIRST Last " + this.last);
-		StdOut.println("FIRST Last Prev " + this.last.prev);
-		this.front.prev = tempFront.next = tempFront.prev = null;
-		StdOut.println("FIRST Front New " + this.front.prev);
-
-		--this.count;
-		StdOut.println(count);
-		return value;
+		// Check if `this.first` is now `null` to resolve errors resulting in
+		// actions done on `null` value pointers
+		if (this.first == null) {
+			this.last = null;
+			this.n--;
+			return popped_value;
+		}
+		
+		this.first.prev = tempFirst.next = null;
+		this.n--;
+		
+		return popped_value;
     }
 
     // Returns the item at the back of this deque.
@@ -115,22 +119,24 @@ public class LinkedDeque<T> implements Iterable<T> {
 			throw new NoSuchElementException("Deque is empty");
 
 		Node tempLast = this.last;
-		T value = this.last.item;
-
-		StdOut.println("LAST Prev " + this.last.prev);
-		StdOut.println("LAST Curr " + this.last);
+		T popped_value = this.peekLast();
 		this.last = this.last.prev;
-		StdOut.println("LAST Last " + this.last);
-		StdOut.println("LAST Last Prev " + this.last.prev);
-		this.last.next = tempLast.prev = tempLast.next = null;
-		StdOut.println("LAST Last New  " + this.last.next);
+
+		// Check if `this.first` is now `null` to resolve errors resulting in
+		// actions done on `null` value pointers
+		if (this.last == null) {
+			this.first = null;
+			this.n--;
+			return popped_value;
+		}
 		
-		--this.count;
-		StdOut.println(count);
-		return value;
+		this.last.next = tempLast.prev = null;
+		this.n--;
+		
+		return popped_value;
     }
 
-    // Returns an iterator to iterate over the items in this deque from front to back.
+    // Returns an iterator to iterate over the items in this deque from first to back.
     public Iterator<T> iterator() {
         return new DequeIterator();
     }
@@ -146,25 +152,29 @@ public class LinkedDeque<T> implements Iterable<T> {
 
     // A deque iterator.
     private class DequeIterator implements Iterator<T> {
-        private Node pointer;
+        private Node current;
 
         // Constructs an iterator.
         public DequeIterator() {
-            this.pointer = LinkedDeque.this.front;
+            this.current = LinkedDeque.this.first;
         }
 
         // Returns true if there are more items to iterate, and false otherwise.
         public boolean hasNext() {
-            return pointer.next == null;
+			if (this.current == null)
+				return false;
+
+            return true;
         }
 
         // Returns the next item.
         public T next() {
-            if (!this.hasNext())
+            if (this.current == null)
 				throw new NoSuchElementException("Iterator is empty");
-			T item = this.pointer.item;
-			this.pointer = this.pointer.next;
-			StdOut.println(item);
+			
+			T item = this.current.item;
+			this.current = this.current.next;
+			
 			return item;
         }
     }
