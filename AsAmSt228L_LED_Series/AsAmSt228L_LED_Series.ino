@@ -1,6 +1,6 @@
 void setup() {
     // Main connections to LEDs
-    for (int i = 2; i <= 8; i++) {
+    for (int i = 2; i <= 9; i++) {
         pinMode(i, OUTPUT);
     }
 
