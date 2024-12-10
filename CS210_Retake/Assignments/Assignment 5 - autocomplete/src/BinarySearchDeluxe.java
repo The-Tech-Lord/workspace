@@ -9,13 +9,31 @@ public class BinarySearchDeluxe {
     // Returns the index of the first key in a that equals the search key, or -1, according to the order induced by
     // the comparator c.
     public static <T> int firstIndexOf(T[] a, T key, Comparator<T> c) {
-        ...
+        if (a == null || key == null || c == null)
+			throw new NullPointerException("a, key, or c is null");
+
+		// Compare `key` with all elements of `a[i]` to find the first occurrence of `key`
+		for (int i = 0; i < a.length; i++)
+			if (c.compare(a[i], key) == 0)
+				return i;
+
+		// Search failed
+		return -1;
     }
 
     // Returns the index of the first key in a that equals the search key, or -1, according to the order induced by
     // the comparator c.
     public static <Key> int lastIndexOf(Key[] a, Key key, Comparator<Key> c) {
-        ...
+        if (a == null || key == null || c == null)
+			throw new NullPointerException("a, key, or c is null");
+
+		// Compare `key` with all elements of `a[i]` to find the last occurrence of `key`
+		for (int i = a.length - 1; i >= 0; i--)
+			if (c.compare(a[i], key) == 0)
+				return i;
+
+		// Search failed
+		return -1;
     }
 
     // Unit tests the library. [DO NOT EDIT]

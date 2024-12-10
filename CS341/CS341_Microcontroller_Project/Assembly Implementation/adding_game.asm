@@ -1,3 +1,5 @@
+.global .main
+
 setup:	asdf					; Initialize Pins
 	asdf
 	asdf

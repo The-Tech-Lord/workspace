@@ -10,12 +10,20 @@ public class Location implements Comparable<Location> {
 
     // Constructs a new location given its name, latitude, and longitude.
     public Location(String name, double lat, double lon) {
-        ...
+        this.name = name;
+		this.lat = lat;
+		this.lon = lon;
     }
+
+	public String getName() {
+		return this.name;
+	}
 
     // Returns the great-circle distance between this location and other.
     public double distanceTo(Location other) {
-        ...
+        double distance = 6359.83 * Math.acos(Math.sin(Math.toRadians(this.lat)) * Math.sin(Math.toRadians(other.lat)) + Math.cos(Math.toRadians(this.lat)) * Math.cos(Math.toRadians(other.lat)) * Math.cos(Math.toRadians(this.lon - other.lon)));
+
+		return distance;
     }
 
     // Returns true if this location is the same as other, and false otherwise.
@@ -30,30 +38,39 @@ public class Location implements Comparable<Location> {
             return false;
         }
         Location a = this, b = (Location) other;
-        ...
+
+		return a.distanceTo(b) == 0;
     }
 
     // Returns a string representation of this location.
     public String toString() {
-        ...
+        return this.name + " (" + this.lat + ", " + this.lon + ")";
     }
 
     // Returns a comparison of this location with other based on their respective distances to the origin, Parthenon
     // (Greece) @ 37.971525, 23.726726.
     public int compareTo(Location other) {
-        ...
+        Location parthenon = new Location("Parthenon (Greece)", 37.971525, 23.726726);
+		double this_dist = this.distanceTo(parthenon);
+		double other_dist = other.distanceTo(parthenon);
+
+		if (this_dist < other_dist)
+			return -1;
+		else if (this_dist > other_dist)
+			return 1;
+		return 0;
     }
 
     // Returns a comparator for comparing two locations by their names.
     public static Comparator<Location> nameOrder() {
-        ...
+        return new NameOrder();
     }
 
     // Name comparator.
     private static class NameOrder implements Comparator<Location> {
         // Returns a comparison of locations v and w by their names.
         public int compare(Location v, Location w) {
-            ...
+            return v.getName().compareTo(w.getName());
         }
     }
 

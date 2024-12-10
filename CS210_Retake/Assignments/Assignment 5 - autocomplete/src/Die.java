@@ -32,10 +32,8 @@ public class Die implements Comparable<Die> {
         }
         Die a = this, b = (Die) other;
 
-		if (a.value == b.value)
-			return true;
-
-		return false;
+		// Boolean one-liner to check for equality
+		return a.value == b.value;
     }
 
     // Returns a string representation of this die.

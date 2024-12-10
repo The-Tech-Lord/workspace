@@ -1,123 +1,95 @@
 void setup() {
-    // 8-bit and Carry Inputs
+    pinMode(0, OUTPUT);  // Incorrect
+    pinMode(1, OUTPUT);  // Correct
+
+    // 8-bit Binary Input  and Carry
+    for (int i = 2; i <= 10; i++)
+        pinMode(i, INPUT);
+
+    // Work Lock Comms
     pinMode(A0, INPUT);
-    pinMode(A1, INPUT);
+    pinMode(A1, OUTPUT);
+
+    // Gameover Check
     pinMode(A2, INPUT);
-    pinMode(A3, INPUT);
-    pinMode(A4, INPUT);
-    pinMode(A5, INPUT);
-    pinMode(11, INPUT);
-    pinMode(12, INPUT);
+
+    // Waiting LED
+    pinMode(11, OUTPUT);
+
+    // Next action
     pinMode(13, INPUT);
-
-    // Solution check pin
-    pinMode(10, INPUT);
-
-    for (int i = 2; i <= 9; i++)
-        pinMode(i, OUTPUT);
 }
 
-void correct(void) {
-    /* Flash Pattern
-     * 11111111
-     * 00000000
-     */
-    for (int i = 0; i < 5; i++) {
-        for (int j = 2; j <= 9; j++)
-                digitalWrite(j, HIGH);
-        delay(500);
-
-        for (int j = 2; j <= 9; j++)
-            digitalWrite(j, LOW);
-        delay(500);
-    }
-
-    // Ensure LEDs are off for next game
-    for (int i = 2; i <= 9; i++)
-        digitalWrite(i, LOW);
-}
-
-void incorrect(void) {
-    /* Flash Pattern
-     * 00001111
-     * 11110000
-     */
-    for (int i = 0; i < 5; i++) {
-        for (int j = 2; j <= 5; j++)
-            digitalWrite(j, HIGH);
-        delay(500);
-
-        for (int j = 2; j <= 5; j++)
-            digitalWrite(j, LOW);
-				
-        for (int j = 6; j <= 9; j++)
-            digitalWrite(j, HIGH);
-        delay(500);
-
-        for (int j = 6; j <= 9; j++)
-            digitalWrite(j, LOW);
-    }
-
-    // Ensure LEDs are off for next attempt
-    for (int i = 2; i <= 9; i++)
-        digitalWrite(i, LOW);
-}
-
-void game_over(void) {
-    /* Flash Pattern
-     * 01010101
-     * 10101010
-     */
-    for (int i = 0; i < 5; i++) {
-        for (int j = 2; j <= 9; j++)
-            if (j % 2 == 0)
-                digitalWrite(j, HIGH);
-        delay(500);
-
-        for (int j = 2; j <= 9; j++)
-            if (j % 2 == 0)
-                digitalWrite(j, LOW);
-
-        for (int j = 2; j <= 9; j++)
-            if (j % 2 != 0)
-                digitalWrite(j, HIGH);
-        delay(500);
-
-        for (int j = 2; j <= 9; j++)
-            if (j % 2 != 0) 
-                digitalWrite(j, LOW);
-    }
-
-    // Ensure LEDs are off for next attempt
-    for (int i = 2; i <= 9; i++)
-        digitalWrite(i, LOW);
+void unlock(int ms) {
+    digitalWrite(A1, HIGH);
+    delay(ms);
+    digitalWrite(A1, LOW);
 }
 
 void loop() {
-    int secret = 0b00010111, attempts = 0;
+    int hardcoded_secret = 0b101010111;
+    int secret = 0b000000000;
 
+    digitalWrite(11, HIGH);
+
+    // Secret Binary Key Stage
     while (true) {
         // Made it all into a one-liner, fight me coward
-        //            0000 0001         0000 0010              0000 0100              0000 1000              0001 0000              0010 0000              0100 0000              1000 0000              1 0000 0000
-        int answer = (digitalRead(A0) | digitalRead(A1) << 1 | digitalRead(A2) << 2 | digitalRead(A3) << 3 | digitalRead(A4) << 4 | digitalRead(A5) << 5 | digitalRead(11) << 6 | digitalRead(12) << 7 | digitalRead(13) << 8) == secret ? HIGH : LOW;
+        //            0000 0001        0000 0010             0000 0100             0000 1000             0001 0000             0010 0000             0100 0000             1000 0000            1 0000 0000
+        secret = digitalRead(2) | digitalRead(3) << 1 | digitalRead(4) << 2 | digitalRead(5) << 3 | digitalRead(6) << 4 | digitalRead(7) << 5 | digitalRead(8) << 6 | digitalRead(9) << 7 | digitalRead(10) << 8;
 
-        // To prevent immediate execution, use a push button to start solution check
-        if (digitalRead(10) == HIGH) {
+        if (digitalRead(13) == HIGH) {
+            if (secret == 0b000000000)
+                secret = hardcoded_secret;
+            break;
+        }
+    }
+
+    delay(1000);
+    digitalWrite(11, LOW);
+    while (true) {
+        // Unlock attempt choosing stage
+        if (digitalRead(13) == HIGH)
+            unlock(500);
+
+        if (digitalRead(A0) == HIGH) {
+            digitalWrite(11, LOW);
+            break;
+        }
+
+        delay(500);
+    }
+
+    // Guessing Stage
+    while (true) {
+        int answer = (digitalRead(2) | digitalRead(3) << 1 | digitalRead(4) << 2 | digitalRead(5) << 3 | digitalRead(6) << 4 | digitalRead(7) << 5 | digitalRead(8) << 6 | digitalRead(9) << 7 | digitalRead(10) << 8) == secret ? HIGH : LOW;
+
+        if (digitalRead(13) == HIGH) {
             if (answer == HIGH) {
-                correct();
-                delay(500);
+                digitalWrite(1, HIGH);
+                unlock(500);
+                digitalWrite(1, LOW);
 
-                // Restart the game
+                while (true) {
+                    if (digitalRead(A0) == HIGH)
+                        break;
+                }
+
                 break;
             } else {
-                attempts++;
+                bool gameover = false;
 
-                if (attempts >= 5) {
-                    game_over();
+                digitalWrite(0, HIGH);
+                delay(500);
+                digitalWrite(0, LOW);
+
+                if (digitalRead(A3) == HIGH) {
+                    gameover = true;
                     break;
                 }
 
-                incorrect();
+                if (gameover == true)
+                    break;
             }
         }
     }

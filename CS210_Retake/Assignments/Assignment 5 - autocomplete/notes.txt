@@ -1,15 +1,15 @@
 1. For each problem, provide in no more than 100 words, a short, high-level description of the problem;
 your approach to solve it; and any issues you encountered and if/how you managed to solve them.
 
-Problem 1 (Die Data Type): ...
+Problem 1 (Die Data Type): Creates a Die object by using the StdRandom.uniform() method that chooses a die face from 1-6 and displays it
 
-Problem 2 (Location Data Type): ...
+Problem 2 (Location Data Type): Takes a list of historical landmarks and compares their distances to Parthenon (Greece) as well as sort them in alphabetical order
 
-Problem 3 (Autocomplete Term): ...
+Problem 3 (Autocomplete Term): Creates a term object that represents a word, with a weight associated with it, that will get stored in an autocomplete dictionary
 
-Problem 4 (Binary Search Deluxe): ...
+Problem 4 (Binary Search Deluxe): Returns the indices of the first and last occurrences of a given word
 
-Problem 5 (Autocomplete): ...
+Problem 5 (Autocomplete): Returns the n number of matches given a word and `n` and prints those in descending order.
 
 2. Did you receive help from anyone? List their names, status (classmate, course staff, other), and
 the nature of help received.
