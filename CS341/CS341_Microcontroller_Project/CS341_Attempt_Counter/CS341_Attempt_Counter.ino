@@ -1,7 +1,4 @@
 void setup() {
-    pinMode(0, INPUT);  // Incorrect
-    pinMode(1, INPUT);  // Correct
-
     // Show if you're a winner or loser
     for (int i = 2; i <= 9; i++)
         pinMode(i, OUTPUT);
@@ -10,17 +7,13 @@ void setup() {
     for (int i = 10; i <= 13; i++)
         pinMode(i, INPUT);
 
-    // Work Lock Comms
-    pinMode(A0, OUTPUT);
-    pinMode(A1, INPUT);
-
-    // Waiting LED
-    pinMode(A3, OUTPUT);
-
     // Gameover Send
     pinMode(A2, OUTPUT);
+
+    Serial.begin(9600);
 }
 
+// Break the other Arduino out of an infinite while-loop
 void unlock(int ms) {
     digitalWrite(A0, HIGH);
     delay(ms);
@@ -29,12 +22,11 @@ void unlock(int ms) {
 
 void correct(void) {
     /* Flash Pattern
-     * 11111111
-     * 00000000
+     * 11111111 00000000 11111111 00000000
      */
     for (int i = 0; i < 5; i++) {
         for (int j = 2; j <= 9; j++)
-                digitalWrite(j, HIGH);
+            digitalWrite(j, HIGH);
         delay(500);
 
         for (int j = 2; j <= 9; j++)
@@ -51,8 +43,7 @@ void correct(void) {
 
 void incorrect(void) {
     /* Flash Pattern
-     * 00001111
-     * 11110000
+     * 00001111 11110000 00001111 11110000
      */
     for (int i = 0; i < 5; i++) {
         for (int j = 2; j <= 5; j++)
@@ -77,8 +68,7 @@ void incorrect(void) {
 
 void game_over(void) {
     /* Flash Pattern
-     * 01010101
-     * 10101010
+     * 01010101 10101010 01010101 10101010
      */
     for (int i = 0; i < 5; i++) {
         for (int j = 2; j <= 9; j++)
@@ -106,21 +96,18 @@ void game_over(void) {
 }
 
 void attempts_display(int attempt) {
-    for (int i = 2; i <= attempt + 1; i++) {
+    for (int i = 2; i <= attempt + 1; i++)
         digitalWrite(i, HIGH);
-    }
 }
 
 void attempts_undisplay() {
-    for (int i = 2; i <= 9; i++) {
+    for (int i = 2; i <= 9; i++)
         digitalWrite(i, LOW);
-    }
 }
 
 void loop() {
+    int hardcoded_attempts = 3;
     int attempts = 0;
-
-    digitalWrite(A3, HIGH);
 
     // Attempt Number Choosing Stage
     while (true) {
@@ -128,16 +115,19 @@ void loop() {
             // Attempt limit
             attempts = (digitalRead(10) | digitalRead(11) << 1 | digitalRead(12) << 2 | digitalRead(13) << 3);
 
+            // Cap amount attempts to 8
             if (attempts > 8)
                 attempts = 8;
+            if (attempts == 0)
+                attempts = hardcoded_attempts;
+
             break;
         }
     }
 
-    digitalWrite(A3, LOW);
-
     unlock(600);
 
+    // Check guesses
     while (true) {
         attempts_display(attempts);
         if (digitalRead(1) == HIGH) {
@@ -158,6 +148,9 @@ void loop() {
             }
 
             incorrect();
+            unlock(500);
         }
     }
+
+    digitalWrite(A3, LOW);  // Successful reset of program
 }
